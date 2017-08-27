@@ -1,9 +1,7 @@
-import test from 'ava';
+const assert = require('assert');
 
-test('my passing test', t => {
-  t.pass();
-});
-
-test('my passing test', t => {
-  t.deepEqual(1, 1);
+describe('File 1', () => {
+  it('this test passes', () => {
+    assert.equal(-1, [1, 2, 3].indexOf(4));
+  });
 });
