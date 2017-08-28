@@ -10,7 +10,8 @@
     "format": "prettier --single-quote --trailing-comma all --write \"**/*.js\""
   },
   "dependencies": {
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "throat": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^4.5.0",

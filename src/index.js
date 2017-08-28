@@ -1,5 +1,7 @@
-const apiCreator = require('./internal/apiCreator');
+const Mocha = require('mocha');
 const toTestResult = require('./utils/toTestResult');
+const throat = require('throat');
+const execa = require('execa');
 
 class CancelRun extends Error {
   constructor(message) {
@@ -8,59 +10,79 @@ class CancelRun extends Error {
   }
 }
 
-class AvaTestRunner {
+class MochaTestRunner {
   constructor(globalConfig) {
     this._globalConfig = globalConfig;
   }
 
+  // eslint-disable-next-line
   async runTests(tests, watcher, onStart, onResult, onFailure /* , options */) {
-    const results = {};
-    tests.forEach(test => {
-      if (watcher.isInterrupted()) {
-        throw new CancelRun();
-      }
-      onStart(test);
-    });
+    const mutex = throat(this._globalConfig.maxWorkers);
+    return Promise.all(
+      tests.map(test =>
+        mutex(async () => {
+          if (watcher.isInterrupted()) {
+            throw new CancelRun();
+          }
 
-    const rootDir = tests[0].context.config.rootDir;
+          await onStart(test);
 
-    const ava = apiCreator({
-      projectDir: rootDir,
-      updateSnapshots: this._globalConfig.updateSnapshot === 'all',
-    });
+          return this._runTest(test)
+            .then(result => onResult(test, result))
+            .catch(e => onFailure(test, e));
+        }),
+      ),
+    );
+  }
 
-    const testPaths = tests.map(({ path }) => path);
+  // eslint-disable-next-line
+  async _runTest(test) {
+    return new Promise(resolve => {
+      class Reporter extends Mocha.reporters.Base {
+        constructor(runner) {
+          super(runner);
+          const results = {};
+          runner.on('suite', suite => {
+            if (suite.file) {
+              try {
+                results[suite.file] = {
+                  meta: {
+                    start: +new Date(),
+                    jestTest: test,
+                  },
+                };
+              } catch (e) {
+                console.log(e);
+              }
+            }
+          });
 
-    const findJestTest = avaFile =>
-      tests.find(t =>
-        t.path.replace(rootDir, '').includes(avaFile.replace('..', '')),
-      );
-
-    ava.on('test-run', async runStatus => {
-      runStatus.on('stats', stats => {
-        results[stats.file] = {
-          meta: { start: +new Date() },
-          stats,
-          tests: [],
-        };
-      });
-
-      runStatus.on('test', test => {
-        const result = results[test.file];
-
-        result.tests.push(test);
-        result.meta.jestTest = findJestTest(test.file);
-        if (result.stats.testCount === result.tests.length) {
-          onResult(result.meta.jestTest, toTestResult(result));
+          runner.on('suite end', suite => {
+            if (suite.file) {
+              const result = results[suite.file];
+              result.tests = suite.tests;
+              try {
+                // console.log(toTestResult(result));
+                resolve(toTestResult(result));
+              } catch (e) {
+                console.log(e);
+              }
+            }
+          });
         }
-      });
+        // eslint-disable-next-line
+        epilogue() {}
+      }
 
-      runStatus.on('error', error => {
-        onFailure(findJestTest(error.file), error);
+      const mocha = new Mocha({ reporter: Reporter });
+      mocha.addFile(test.path);
+
+      mocha.run(failures => {
+        process.on('exit', () => {
+          process.exit(failures);
+        });
       });
     });
-
-    return ava.run(testPaths);
   }
 }
-module.exports = AvaTestRunner;
+module.exports = MochaTestRunner;
