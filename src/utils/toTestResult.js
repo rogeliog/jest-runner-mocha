@@ -1,39 +1,23 @@
-// const getFormattedAvaError = require('../internal/getFormattedAvaError');
+const formatMochaError = require('../internal/formatMochaError');
 
-const toMochaError = (test = {}) => {
-  if (!test.err) {
-    return null;
-  }
-
-  const { name, expected, actual } = test.err;
-
-  return `
-    ${name}
-    + expected - actual
-
-    -${actual}
-    +${expected}
-  `;
-};
-
-const toTestResult = ({ meta, tests }) => {
-  const numTests = tests.length;
-  const numFailingTests = tests.filter(t => t.state === 'failed').length;
-
-  const totalDuration = tests.reduce(
-    (sum, test) => sum + (test.duration || 0),
-    0,
+const hasError = (test = {}) => {
+  return (
+    test.err instanceof Error || (test.err && Object.keys(test.err).length > 0)
   );
+};
+const toMochaError = test =>
+  hasError(test) ? `\n${formatMochaError(test)}\n\n` : null;
 
+const toTestResult = ({ stats, tests, jestTestPath }) => {
   return {
     console: null,
-    failureMessage: toMochaError(tests.find(t => t.state === 'failed')),
-    numFailingTests,
-    numPassingTests: numTests - numFailingTests,
-    numPendingTests: 0, // TODO: What should do here?
+    failureMessage: toMochaError(tests.find(hasError)),
+    numFailingTests: stats.failures,
+    numPassingTests: stats.passes,
+    numPendingTests: stats.pending,
     perfStats: {
-      end: meta.start + totalDuration / 1000,
-      start: meta.start,
+      end: +new Date(stats.end),
+      start: +new Date(stats.start),
     },
     skipped: false,
     snapshot: {
@@ -46,15 +30,15 @@ const toTestResult = ({ meta, tests }) => {
     },
     sourceMaps: {},
     testExecError: null,
-    testFilePath: meta.jestTest.path,
+    testFilePath: jestTestPath,
     testResults: tests.map(test => {
       return {
         ancestorTitles: [],
         duration: test.duration / 1000,
         failureMessages: toMochaError(test),
-        fullName: test.title,
-        numPassingAsserts: test.error ? 1 : 0,
-        status: test.state === 'passed' ? 'passed' : 'failed',
+        fullName: test.fullTitle,
+        numPassingAsserts: hasError(test) ? 1 : 0,
+        status: hasError(test) ? 'failed' : 'passed',
         title: test.title,
       };
     }),
