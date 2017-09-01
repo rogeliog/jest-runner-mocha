@@ -1,7 +1,5 @@
 const toTestResult = require('../toTestResult');
 
-const filePath = '/path/to/file';
-
 const jestTestPath = 'path/to/file';
 const start = +new Date('2000/01/01');
 const end = +new Date('2000/01/02'); // Some random end date

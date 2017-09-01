@@ -51,6 +51,7 @@ module.exports = class MochaTestRunner {
     const onError = async (err, test) => {
       await onFailure(test, err);
       if (err.type === 'ProcessTerminatedError') {
+        // eslint-disable-next-line no-console
         console.error(
           'A worker process has quit unexpectedly! ' +
             'Most likely this is an initialization error.',
