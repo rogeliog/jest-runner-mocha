@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Works when it has a failing tests 1`] = `
+"FAIL integrationTests/__fixtures__/failing/__mocha__/__tests__/file.test.js
+
+    My tests This test fails
+
+      [31mAssertionError [ERR_ASSERTION]: 1 == 2[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-1[0m
+      [32m+2[0m
+      
+    at Context.it (integrationTests/__fixtures__/failing/__mocha__/__tests__/file.test.js:5:12)
+
+
+  ✕ This test fails (<<REPLACED>>)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        <<REPLACED>>
+Ran all test suites.
+"
+`;
+
+exports[`Works when it has only passing tests 1`] = `
+"PASS integrationTests/__fixtures__/passing/__mocha__/__tests__/file.test.js
+  ✓ This test passes
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        <<REPLACED>>
+Ran all test suites."
+`;
