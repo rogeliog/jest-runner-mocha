@@ -1,7 +1,6 @@
 const throat = require('throat');
 const pify = require('pify');
 const workerFarm = require('worker-farm');
-const execa = require('execa');
 const path = require('path');
 
 const TEST_WORKER_PATH = path.join(__dirname, 'runMocha.js');
@@ -13,13 +12,13 @@ class CancelRun extends Error {
   }
 }
 
-class MochaTestRunner {
+module.exports = class MochaTestRunner {
   constructor(globalConfig) {
     this._globalConfig = globalConfig;
   }
 
   // eslint-disable-next-line
-  async runTests(tests, watcher, onStart, onResult, onFailure /* , options */) {
+  async runTests(tests, watcher, onStart, onResult, onFailure) {
     const farm = workerFarm(
       {
         autoStart: true,
@@ -29,8 +28,10 @@ class MochaTestRunner {
       },
       TEST_WORKER_PATH,
     );
+
     const mutex = throat(this._globalConfig.maxWorkers);
     const worker = pify(farm);
+
     const runTestInWorker = test =>
       mutex(async () => {
         if (watcher.isInterrupted()) {
@@ -40,7 +41,7 @@ class MochaTestRunner {
         return worker({
           config: test.context.config,
           globalConfig: this._globalConfig,
-          path: test.path,
+          testPath: test.path,
           rawModuleMap: watcher.isWatchMode()
             ? test.context.moduleMap.getRawModuleMap()
             : null,
@@ -78,16 +79,4 @@ class MochaTestRunner {
 
     return Promise.race([runAllTests, onInterrupt]).then(cleanup, cleanup);
   }
-
-  // eslint-disable-next-line
-  async _runTest(test) {
-    // return execa('node', , test.path], {
-    //   env: process.env,
-    // }).then(({ stdout }) => JSON.parse(stdout));
-    // .then(console.log); // JSON.parse(stdout));
-    // })
-    //   .then(a => console.log(a))
-    //   .catch(a => console.log('ERROR', a));
-  }
-}
-module.exports = MochaTestRunner;
+};

@@ -1,3 +1,10 @@
+/* eslint-disable no-param-reassign */
+/**
+ * NOTE:
+ * This file is was copied from https://github.com/mochajs/mocha/blob/master/lib/reporters/base.js#L167
+ * Ideally we should have a better way of formattng the errors.
+ */
+
 // eslint-disable-next-line
 const diff = require('diff');
 const utils = require('mocha/lib/utils');
@@ -23,19 +30,6 @@ const colors = {
   'diff added': 32,
   'diff removed': 31,
 };
-
-/**
- * Pad the given `str` to `len`.
- *
- * @api private
- * @param {string} str
- * @param {string} len
- * @return {string}
- */
-function pad(str, len) {
-  str = String(str);
-  return Array(len - str.length + 1).join(' ') + str;
-}
 
 /**
  * Object#toString reference.
@@ -85,65 +79,6 @@ function escapeInvisibles(line) {
 }
 
 /**
- * Return a character diff for `err`.
- *
- * @api private
- * @param {Error} err
- * @param {string} type
- * @param {boolean} escape
- * @return {string}
- */
-function errorDiff(err, type, escape) {
-  const actual = escape ? escapeInvisibles(err.actual) : err.actual;
-  const expected = escape ? escapeInvisibles(err.expected) : err.expected;
-  return diff
-    [`diff${type}`](actual, expected)
-    .map(str => {
-      if (str.added) {
-        return colorLines('diff added', str.value);
-      }
-      if (str.removed) {
-        return colorLines('diff removed', str.value);
-      }
-      return str.value;
-    })
-    .join('');
-}
-
-/**
- * Returns an inline diff between 2 strings with coloured ANSI output
- *
- * @api private
- * @param {Error} err with actual/expected
- * @param {boolean} escape
- * @return {string} Diff
- */
-function inlineDiff(err, escape) {
-  let msg = errorDiff(err, 'WordsWithSpace', escape);
-
-  // linenos
-  const lines = msg.split('\n');
-  if (lines.length > 4) {
-    const width = String(lines.length).length;
-    msg = lines
-      .map((str, i) => {
-        return `${pad(++i, width)} |` + ` ${str}`;
-      })
-      .join('\n');
-  }
-
-  // legend
-  msg = `\n${color('diff removed', 'actual')} ${color(
-    'diff added',
-    'expected',
-  )}\n\n${msg}\n`;
-
-  // indent
-  msg = msg.replace(/^/gm, '      ');
-  return msg;
-}
-
-/**
  * Returns a unified diff between two strings.
  *
  * @api private
@@ -183,12 +118,6 @@ function unifiedDiff(err, escape) {
 }
 
 const formatMochaError = test => {
-  // format
-  let fmt =
-    color('error title', '  %s) %s:\n') +
-    color('error message', '     %s') +
-    color('error stack', '\n%s\n');
-
   // msg
   let msg;
   const err = test.err;
@@ -227,27 +156,19 @@ const formatMochaError = test => {
   ) {
     escape = false;
     if (!(utils.isString(actual) && utils.isString(expected))) {
+      /* eslint-disable no-multi-assign */
       err.actual = actual = utils.stringify(actual);
       err.expected = expected = utils.stringify(expected);
+      /* eslint-enable no-multi-assign */
     }
 
-    fmt =
-      color('error title', '  %s) %s:\n%s') + color('error stack', '\n%s\n');
     const match = message.match(/^([^:]+): expected/);
     msg = `\n      ${color('error message', match ? match[1] : msg)}`;
 
-    // if (exports.inlineDiffs) {
-    // msg += inlineDiff(err, escape);
-    // } else {
     msg += unifiedDiff(err, escape);
-    // }
   }
 
-  // indent stack trace
-  // stack = stack.replace(/^/gm, '  ');
-
-  // console.log(test.fullTitle());
-  return [test.fullTitle.replace(/^/gm, '    '), msg, stack].join('\n');
+  return [test.fullTitle().replace(/^/gm, '    '), msg, stack].join('\n');
 };
 
 module.exports = formatMochaError;

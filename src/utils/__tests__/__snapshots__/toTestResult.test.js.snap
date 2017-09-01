@@ -1,21 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`turns a failing ava tests to Jest test result 1`] = `
+exports[`turns a failing mocha tests to Jest test result 1`] = `
 Object {
   "console": null,
-  "failureMessage": "  [1m[37mThis test failed[39m[22m
-  [90m/path/to/file.js:12[39m
+  "failureMessage": "
+    This test failed
 
-  Difference:
+      [31mThe error message[0m
+      [32m+ expected[0m [31m- actual[0m
 
-  - 1
-  + 2
+      [31m-2[0m
+      [32m+1[0m
+      
+Error stack
+
 ",
   "numFailingTests": 1,
   "numPassingTests": 0,
   "numPendingTests": 0,
   "perfStats": Object {
-    "end": 946713600000.004,
+    "end": 946800000000,
     "start": 946713600000,
   },
   "skipped": false,
@@ -34,13 +38,17 @@ Object {
     Object {
       "ancestorTitles": Array [],
       "duration": 0.004,
-      "failureMessages": "  [1m[37mThis test failed[39m[22m
-  [90m/path/to/file.js:12[39m
+      "failureMessages": "
+    This test failed
 
-  Difference:
+      [31mThe error message[0m
+      [32m+ expected[0m [31m- actual[0m
 
-  - 1
-  + 2
+      [31m-2[0m
+      [32m+1[0m
+      
+Error stack
+
 ",
       "fullName": "This test failed",
       "numPassingAsserts": 1,
@@ -51,62 +59,7 @@ Object {
 }
 `;
 
-exports[`turns a failing snapshot ava tests to Jest test result 1`] = `
-Object {
-  "console": null,
-  "failureMessage": "  [1m[37mThis test failed with a snapshot[39m[22m
-  [90m/path/to/file:16[39m
-
-  Did not match snapshot
-
-  Difference:
-
-  - 'Foo BarBaz'
-  + 'Foo Bar Baz'
-",
-  "numFailingTests": 1,
-  "numPassingTests": 0,
-  "numPendingTests": 0,
-  "perfStats": Object {
-    "end": 946713600000.002,
-    "start": 946713600000,
-  },
-  "skipped": false,
-  "snapshot": Object {
-    "added": 0,
-    "fileDeleted": false,
-    "matched": 0,
-    "unchecked": 0,
-    "unmatched": 1,
-    "updated": 0,
-  },
-  "sourceMaps": Object {},
-  "testExecError": null,
-  "testFilePath": "path/to/file",
-  "testResults": Array [
-    Object {
-      "ancestorTitles": Array [],
-      "duration": 0.002,
-      "failureMessages": "  [1m[37mThis test failed with a snapshot[39m[22m
-  [90m/path/to/file:16[39m
-
-  Did not match snapshot
-
-  Difference:
-
-  - 'Foo BarBaz'
-  + 'Foo Bar Baz'
-",
-      "fullName": "This test failed with a snapshot",
-      "numPassingAsserts": 1,
-      "status": "failed",
-      "title": "This test failed with a snapshot",
-    },
-  ],
-}
-`;
-
-exports[`turns a passing ava tests to Jest test result 1`] = `
+exports[`turns a passing mocha tests to Jest test result 1`] = `
 Object {
   "console": null,
   "failureMessage": null,
@@ -114,7 +67,7 @@ Object {
   "numPassingTests": 1,
   "numPendingTests": 0,
   "perfStats": Object {
-    "end": 946713600000.001,
+    "end": 946800000000,
     "start": 946713600000,
   },
   "skipped": false,
@@ -143,24 +96,26 @@ Object {
 }
 `;
 
-exports[`turns a whole ava tests suite to Jest test result 1`] = `
+exports[`turns a whole mocha tests suite to Jest test result 1`] = `
 Object {
   "console": null,
-  "failureMessage": "  [1m[37mThis test failed with a snapshot[39m[22m
-  [90m/path/to/file:16[39m
+  "failureMessage": "
+    This test failed
 
-  Did not match snapshot
+      [31mThe error message[0m
+      [32m+ expected[0m [31m- actual[0m
 
-  Difference:
+      [31m-2[0m
+      [32m+1[0m
+      
+Error stack
 
-  - 'Foo BarBaz'
-  + 'Foo Bar Baz'
 ",
-  "numFailingTests": 2,
-  "numPassingTests": 2,
+  "numFailingTests": 0,
+  "numPassingTests": 1,
   "numPendingTests": 0,
   "perfStats": Object {
-    "end": 946713600000.011,
+    "end": 946800000000,
     "start": 946713600000,
   },
   "skipped": false,
@@ -169,7 +124,7 @@ Object {
     "fileDeleted": false,
     "matched": 0,
     "unchecked": 0,
-    "unmatched": 1,
+    "unmatched": 0,
     "updated": 0,
   },
   "sourceMaps": Object {},
@@ -184,24 +139,6 @@ Object {
       "numPassingAsserts": 0,
       "status": "passed",
       "title": "This test passes[1]",
-    },
-    Object {
-      "ancestorTitles": Array [],
-      "duration": 0.002,
-      "failureMessages": "  [1m[37mThis test failed with a snapshot[39m[22m
-  [90m/path/to/file:16[39m
-
-  Did not match snapshot
-
-  Difference:
-
-  - 'Foo BarBaz'
-  + 'Foo Bar Baz'
-",
-      "fullName": "This test failed with a snapshot",
-      "numPassingAsserts": 1,
-      "status": "failed",
-      "title": "This test failed with a snapshot",
     },
     Object {
       "ancestorTitles": Array [],
@@ -215,13 +152,17 @@ Object {
     Object {
       "ancestorTitles": Array [],
       "duration": 0.004,
-      "failureMessages": "  [1m[37mThis test failed[39m[22m
-  [90m/path/to/file.js:12[39m
+      "failureMessages": "
+    This test failed
 
-  Difference:
+      [31mThe error message[0m
+      [32m+ expected[0m [31m- actual[0m
 
-  - 1
-  + 2
+      [31m-2[0m
+      [32m+1[0m
+      
+Error stack
+
 ",
       "fullName": "This test failed",
       "numPassingAsserts": 1,

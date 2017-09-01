@@ -1,21 +1,25 @@
 const Mocha = require('mocha');
-const omit = require('lodash/omit');
-const path = require('path');
 const toTestResult = require('./utils/toTestResult');
+const path = require('path');
+const fs = require('fs');
 
-// const testPath = process.argv[2];
+const getMochaOpts = config => {
+  const mochaConfigPath = path.join(
+    config.rootDir,
+    'jest-runner-mocha.config.js',
+  );
 
-function clean(test) {
-  return {
-    title: test.title,
-    fullTitle: test.fullTitle(),
-    duration: test.duration,
-    currentRetry: test.currentRetry(),
-    err: test.err,
-  };
-}
+  if (fs.existsSync(mochaConfigPath)) {
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    return require(mochaConfigPath);
+  }
 
-const runMocha = (options, workerCallback) => {
+  return {};
+};
+
+const runMocha = ({ config, testPath }, workerCallback) => {
+  const mochaOptions = getMochaOpts(config);
+
   class Reporter extends Mocha.reporters.Base {
     constructor(runner) {
       super(runner);
@@ -29,40 +33,45 @@ const runMocha = (options, workerCallback) => {
       runner.on('fail', test => failures.push(test));
       runner.on('pending', test => pending.push(test));
       runner.on('end', () => {
-        const results = {
-          stats: this.stats,
-          tests: tests.map(clean),
-          pending: pending.map(clean),
-          failures: failures.map(clean),
-          passes: passes.map(clean),
-          jestTestPath: options.path,
-        };
-
         try {
-          workerCallback(null, toTestResult(results));
+          workerCallback(
+            null,
+            toTestResult({
+              stats: this.stats,
+              tests,
+              pending,
+              failures,
+              passes,
+              jestTestPath: testPath,
+            }),
+          );
         } catch (e) {
           workerCallback(e);
         }
       });
     }
-
-    // eslint-disable-next-line
-    // epilogue() {}
   }
 
   const mocha = new Mocha({
-    // ui: 'tdd',
     reporter: Reporter,
   });
 
-  require('/Users/rogelioguzman/dev/babel/scripts/babel-register');
-  mocha.addFile(options.path);
+  if (mochaOptions.compiler) {
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    require(mochaOptions.compiler);
+  }
 
-  mocha.ui('tdd').run(() => {
-    process.on('exit', () => {
-      process.exit();
-    });
-  });
+  mocha.addFile(testPath);
+
+  const onEnd = () => {
+    process.on('exit', () => process.exit());
+  };
+
+  if (mochaOptions.ui) {
+    mocha.ui(mochaOptions.ui).run(onEnd);
+  } else {
+    mocha.run(onEnd);
+  }
 };
 
 module.exports = runMocha;

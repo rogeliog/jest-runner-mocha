@@ -36,7 +36,7 @@ const toTestResult = ({ stats, tests, jestTestPath }) => {
         ancestorTitles: [],
         duration: test.duration / 1000,
         failureMessages: toMochaError(test),
-        fullName: test.fullTitle,
+        fullName: test.fullTitle(),
         numPassingAsserts: hasError(test) ? 1 : 0,
         status: hasError(test) ? 'failed' : 'passed',
         title: test.title,
