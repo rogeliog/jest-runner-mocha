@@ -26,3 +26,41 @@ Snapshots:   0 total
 Time:
 Ran all test suites."
 `;
+
+exports[`Works when it throws an error 1`] = `
+"FAIL integrationTests/__fixtures__/errorInTest/__mocha__/__tests__/file.test.js
+  ● Test suite failed to run
+    Some error message
+      at Object.<anonymous> (__mocha__/__tests__/file.test.js:4:7)
+      at Module._compile (../../../module.js:569:30)
+      at Object.Module._extensions..js (../../../module.js:580:10)
+      at Module.load (../../../module.js:503:32)
+      at tryModuleLoad (../../../module.js:466:12)
+      at Function.Module._load (../../../module.js:458:3)
+      at Module.require (../../../module.js:513:17)
+      at require (../../../internal/module.js:11:18)
+      at Array.forEach (native)
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:
+Ran all test suites.
+"
+`;
+
+exports[`Works when it throws an error outside the tests 1`] = `
+"Error: Can't find a root directory while resolving a config file path.
+Provided path to resolve: /mocked-path-to-jest-runner-mocha/integrationTests/__fixtures__/errorOusideTest
+cwd: /mocked-path-to-jest-runner-mocha
+    at module.exports (/mocked-path-to-jest-runner-mocha/node_modules/jest-config/build/resolve_config_path.js:43:11)
+    at readConfig (/mocked-path-to-jest-runner-mocha/node_modules/jest-config/build/index.js:58:84)
+    at _getConfigs (/mocked-path-to-jest-runner-mocha/node_modules/jest-cli/build/cli/index.js:209:77)
+    at /mocked-path-to-jest-runner-mocha/node_modules/jest-cli/build/cli/index.js:64:7
+    at Generator.next (<anonymous>)
+    at step (/mocked-path-to-jest-runner-mocha/node_modules/jest-cli/build/cli/index.js:46:2233)
+    at /mocked-path-to-jest-runner-mocha/node_modules/jest-cli/build/cli/index.js:46:2463
+    at Promise (<anonymous>)
+    at /mocked-path-to-jest-runner-mocha/node_modules/jest-cli/build/cli/index.js:46:2144
+    at runCLI (/mocked-path-to-jest-runner-mocha/node_modules/jest-cli/build/cli/index.js:99:53)
+"
+`;

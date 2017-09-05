@@ -67,10 +67,14 @@ const runMocha = ({ config, testPath }, workerCallback) => {
     process.on('exit', () => process.exit());
   };
 
-  if (mochaOptions.ui) {
-    mocha.ui(mochaOptions.ui).run(onEnd);
-  } else {
-    mocha.run(onEnd);
+  try {
+    if (mochaOptions.ui) {
+      mocha.ui(mochaOptions.ui).run(onEnd);
+    } else {
+      mocha.run(onEnd);
+    }
+  } catch (e) {
+    workerCallback(e);
   }
 };
 
