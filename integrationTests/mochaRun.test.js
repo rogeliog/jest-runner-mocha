@@ -19,8 +19,9 @@ const runJest = fixture => {
 
 const normalize = output =>
   output
-    .replace(/\d*\.?\d+m?s/g, '<<REPLACED>>')
-    .replace(/, estimated <<REPLACED>>/g, '');
+    .replace(/\(?\d*\.?\d+m?s\)?/g, '')
+    .replace(/, estimated/g, '')
+    .replace(/\s+\n/g, '\n');
 
 it('Works when it has only passing tests', async () => {
   const { stderr } = await runJest('passing');
