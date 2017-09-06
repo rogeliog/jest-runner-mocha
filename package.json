@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "build": "babel src --ignore **/*.test.js,integration -d build",
     "postinstall": "yarn build",
-    "format": "prettier --single-quote --trailing-comma all --write \"**/*.js\""
+    "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
     "lodash": "4.17.4",
