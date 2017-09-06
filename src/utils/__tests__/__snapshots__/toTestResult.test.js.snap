@@ -19,8 +19,8 @@ Error stack
   "numPassingTests": 0,
   "numPendingTests": 0,
   "perfStats": Object {
-    "end": 946800000000,
-    "start": 946713600000,
+    "end": 946684801000,
+    "start": 946684800000,
   },
   "skipped": false,
   "snapshot": Object {
@@ -67,8 +67,8 @@ Object {
   "numPassingTests": 1,
   "numPendingTests": 0,
   "perfStats": Object {
-    "end": 946800000000,
-    "start": 946713600000,
+    "end": 946684801000,
+    "start": 946684800000,
   },
   "skipped": false,
   "snapshot": Object {
@@ -115,8 +115,8 @@ Error stack
   "numPassingTests": 1,
   "numPendingTests": 0,
   "perfStats": Object {
-    "end": 946800000000,
-    "start": 946713600000,
+    "end": 946684801000,
+    "start": 946684800000,
   },
   "skipped": false,
   "snapshot": Object {

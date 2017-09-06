@@ -1,8 +1,8 @@
 const toTestResult = require('../toTestResult');
 
 const jestTestPath = 'path/to/file';
-const start = +new Date('2000/01/01');
-const end = +new Date('2000/01/02'); // Some random end date
+const start = Date.UTC(2000, 0, 1, 0, 0, 0, 0);
+const end = start + 1000;
 
 const passingTest = {
   duration: 1,
