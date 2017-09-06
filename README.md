@@ -1,4 +1,4 @@
-# jest-runner-mocha
+# jest-runner-mocha [![Build Status](https://travis-ci.org/rogeliog/jest-runner-mocha.svg?branch=master)](https://travis-ci.org/rogeliog/jest-runner-mocha)
 
 An experimental Mocha runner for Jest
 

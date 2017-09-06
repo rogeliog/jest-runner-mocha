@@ -15,6 +15,8 @@ const normalize = output =>
     .replace(/\s+\n/g, '\n');
 
 const runJest = fixture => {
+  // eslint-disable-next-line
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
   return execa(
     'jest',
     [
