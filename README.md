@@ -4,6 +4,9 @@ An experimental Mocha runner for Jest
 
 This makes it easy to integrate existing Mocha projects with Jest.
 
+![runner](https://user-images.githubusercontent.com/574806/30088955-728bf97e-925e-11e7-9b25-6aac237085ca.gif)
+
+
 ## Usage
 
 ### Install
