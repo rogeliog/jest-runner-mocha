@@ -20,7 +20,7 @@ yarn add --dev jest jest-runner-mocha
 
 # or with NPM
 
-npm install --dev jest jest-runner-mocha
+npm install --save-dev jest jest-runner-mocha
 
 ```
 
