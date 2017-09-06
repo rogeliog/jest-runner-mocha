@@ -24,6 +24,7 @@ const normalize = output =>
     .replace(/\(?\d*\.?\d+m?s\)?/g, '')
     .replace(/, estimated/g, '')
     .replace(new RegExp(rootDir, 'g'), '/mocked-path-to-jest-runner-mocha')
+    .replace(new RegExp('at .*\\n', 'g'), 'at mocked-stack-trace\n')
     .replace(/\s+\n/g, '\n');
 
 it('Works when it has only passing tests', async () => {
@@ -38,6 +39,7 @@ it('Works when it has a failing tests', async () => {
 
 it('Works when it throws an error', async () => {
   const { stderr } = await runJest('errorInTest');
+
   expect(normalize(stderr)).toMatchSnapshot();
 });
 
