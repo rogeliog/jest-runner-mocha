@@ -1,8 +1,8 @@
 const Mocha = require('mocha');
 const toTestResult = require('./utils/toTestResult');
+const setupCollectCoverage = require('./utils/setupCollectCoverage');
 const path = require('path');
 const fs = require('fs');
-const minimatch = require('minimatch');
 
 const getMochaOpts = config => {
   const mochaConfigPath = path.join(
@@ -63,42 +63,12 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
     require(mochaOptions.compiler);
   }
 
-  if (globalConfig.collectCoverage) {
-    const register = require('babel-register');
-    register({
-      plugins: [
-        [
-          'babel-plugin-istanbul',
-          {
-            // files outside `cwd` will not be instrumented
-            cwd: config.rootDir,
-            useInlineSourceMaps: false,
-            exclude: config.coveragePathIgnorePatterns,
-          },
-        ],
-      ],
-      ignore: filename => {
-        return (
-          /node_modules/.test(filename) ||
-          config.coveragePathIgnorePatterns.some(pattern =>
-            minimatch(filename, pattern),
-          )
-        );
-      },
-      // ignore: filename => {
-      //   console.log('ROGELIO', filename);
-      //   // process.exit(1)
-      //   // return ;
-      //   return /node_modules/.match(filename) || filename.includes('runtime'),
-      // },
-      // Only js files in the test folder but not in the subfolder fixtures.
-      // only: /packages\/.+\/test\/(?!fixtures\/).+\.js$/,
-      babelrc: false,
-      // compact: true,
-      retainLines: true,
-      sourceMaps: 'inline',
-    });
-  }
+  setupCollectCoverage({
+    filename: testPath,
+    rootDir: config.rootDir,
+    collectCoverage: globalConfig.collectCoverage,
+    coveragePathIgnorePatterns: config.coveragePathIgnorePatterns,
+  });
 
   mocha.addFile(testPath);
 
