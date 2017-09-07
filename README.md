@@ -47,13 +47,7 @@ module.exports = {
 yarn jest
 ```
 
-### Coverage
-
-Coverage works outside of the box, simply `yarn jest -- --coverage`
-
-You can also use other Jest options like [coveragePathIgnorePatterns](http://facebook.github.io/jest/docs/en/configuration.html#coveragepathignorepatterns-array-string) and [coverageReporters](http://facebook.github.io/jest/docs/en/configuration.html#coveragereporters-array-string)
-
-## Custom config options
+## Config options
 
 Create a `jest-runner-mocha.config.js` at the `<rootDir>` or your Jest project.
 
@@ -79,5 +73,6 @@ _NOTE: Eventually Jest will eventually have an option for configuring runners th
 
 ## Known issues
 - It does not support any Mocha options except for `ui` and `compiler`
+- You can't run it with `jest --coverage`
 - Support for compilers is very limited.
 - Does not support `jest --runInBand`
