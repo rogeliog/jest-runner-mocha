@@ -212,7 +212,7 @@ babel-messages@^6.23.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-istanbul@^4.0.0:
+babel-plugin-istanbul@4.1.4, babel-plugin-istanbul@^4.0.0:
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/babel-plugin-istanbul/-/babel-plugin-istanbul-4.1.4.tgz#18dde84bf3ce329fddf3f4103fae921456d8e587"
   dependencies:
@@ -1215,12 +1215,14 @@ jest-resolve@^21.0.0:
     chalk "^2.0.1"
     is-builtin-module "^1.0.0"
 
-jest-runner-mocha@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/jest-runner-mocha/-/jest-runner-mocha-0.0.1.tgz#50eb32b9f0338417855bae9912e02fb3b5248e44"
+jest-runner-mocha@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/jest-runner-mocha/-/jest-runner-mocha-0.2.0.tgz#f9f736c301a2c24f33d4f91968c54ab1d7cba5a5"
   dependencies:
+    babel-plugin-istanbul "4.1.4"
     babel-register "6.26.0"
     lodash "4.17.4"
+    minimatch "3.0.4"
     mocha "3.5.0"
     pify "3.0.0"
     throat "4.1.0"
@@ -1528,7 +1530,7 @@ mime-types@^2.1.12, mime-types@~2.1.7:
   dependencies:
     mime-db "~1.30.0"
 
-minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
+minimatch@3.0.4, minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -2006,7 +2008,7 @@ should-util@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/should-util/-/should-util-1.0.0.tgz#c98cda374aa6b190df8ba87c9889c2b4db620063"
 
-should@^13.0.0:
+should@13.0.0:
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/should/-/should-13.0.0.tgz#552f0cf1bc64b2aaddcb2b776b7c1bdf566f5ca7"
   dependencies:
