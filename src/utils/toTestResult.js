@@ -8,8 +8,9 @@ const hasError = (test = {}) => {
 const toMochaError = test =>
   hasError(test) ? `\n${formatMochaError(test)}\n\n` : null;
 
-const toTestResult = ({ stats, tests, jestTestPath }) => {
+const toTestResult = ({ stats, tests, jestTestPath, coverage }) => {
   return {
+    coverage,
     console: null,
     failureMessage: toMochaError(tests.find(hasError)),
     numFailingTests: stats.failures,

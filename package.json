@@ -10,18 +10,19 @@
     "url": "https://github.com/rogeliog/jest-runner-mocha.git"
   },
   "homepage": "https://github.com/rogeliog/jest-runner-mocha",
-  "files": [
-    "build/"
-  ],
+  "files": ["build/"],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
+    "watch": "babel src -w --ignore **/*.test.js,integration -d build",
     "build": "babel src --ignore **/*.test.js,integration -d build",
     "prepublish": "yarn build",
     "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
+    "babel-plugin-istanbul": "4.1.4",
     "lodash": "4.17.4",
+    "minimatch": "3.0.4",
     "mocha": "3.5.0",
     "pify": "3.0.0",
     "throat": "4.1.0",
