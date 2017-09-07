@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "babel-plugin-istanbul": "4.1.4",
+    "babel-polyfill": "^6.26.0",
     "babel-register": "6.26.0",
     "lodash": "4.17.4",
     "minimatch": "3.0.4",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-jest": "21.0.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "1.6.0",
     "eslint": "4.5.0",
     "eslint-config-airbnb-base": "11.3.2",

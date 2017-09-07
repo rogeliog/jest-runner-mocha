@@ -1,3 +1,4 @@
+require('babel-polyfill');
 const throat = require('throat');
 const pify = require('pify');
 const workerFarm = require('worker-farm');
