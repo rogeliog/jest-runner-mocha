@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-mocha",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
   "description": "An experimental Mocha runner for Jest",
