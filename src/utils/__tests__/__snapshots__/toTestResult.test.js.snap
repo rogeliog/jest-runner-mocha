@@ -3,6 +3,7 @@
 exports[`turns a failing mocha tests to Jest test result 1`] = `
 Object {
   "console": null,
+  "coverage": undefined,
   "failureMessage": "
     This test failed
 
@@ -62,6 +63,47 @@ Error stack
 exports[`turns a passing mocha tests to Jest test result 1`] = `
 Object {
   "console": null,
+  "coverage": undefined,
+  "failureMessage": null,
+  "numFailingTests": 0,
+  "numPassingTests": 1,
+  "numPendingTests": 0,
+  "perfStats": Object {
+    "end": 946684801000,
+    "start": 946684800000,
+  },
+  "skipped": false,
+  "snapshot": Object {
+    "added": 0,
+    "fileDeleted": false,
+    "matched": 0,
+    "unchecked": 0,
+    "unmatched": 0,
+    "updated": 0,
+  },
+  "sourceMaps": Object {},
+  "testExecError": null,
+  "testFilePath": "path/to/file",
+  "testResults": Array [
+    Object {
+      "ancestorTitles": Array [],
+      "duration": 0.001,
+      "failureMessages": null,
+      "fullName": "This test passes[1]",
+      "numPassingAsserts": 0,
+      "status": "passed",
+      "title": "This test passes[1]",
+    },
+  ],
+}
+`;
+
+exports[`turns a passing mocha tests to Jest test result with coverage 1`] = `
+Object {
+  "console": null,
+  "coverage": Object {
+    "mocked": "coverageData",
+  },
   "failureMessage": null,
   "numFailingTests": 0,
   "numPassingTests": 1,
@@ -99,6 +141,7 @@ Object {
 exports[`turns a whole mocha tests suite to Jest test result 1`] = `
 Object {
   "console": null,
+  "coverage": undefined,
   "failureMessage": "
     This test failed
 

@@ -45,6 +45,23 @@ it('turns a passing mocha tests to Jest test result', () => {
   ).toMatchSnapshot();
 });
 
+it('turns a passing mocha tests to Jest test result with coverage', () => {
+  expect(
+    toTestResult({
+      jestTestPath,
+      coverage: { mocked: 'coverageData' },
+      stats: {
+        start,
+        end,
+        passes: 1,
+        pending: 0,
+        failures: 0,
+      },
+      tests: [passingTest],
+    }),
+  ).toMatchSnapshot();
+});
+
 it('turns a failing mocha tests to Jest test result', () => {
   expect(
     toTestResult({

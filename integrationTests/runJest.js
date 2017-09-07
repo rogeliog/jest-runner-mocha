@@ -14,7 +14,7 @@ const normalize = output =>
     .replace(/(mocked-stack-trace)+/, '      at mocked-stack-trace')
     .replace(/\s+\n/g, '\n');
 
-const runJest = fixture => {
+const runJest = (project, options = []) => {
   // eslint-disable-next-line
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
   return execa(
@@ -24,14 +24,14 @@ const runJest = fixture => {
       '--no-watchman',
       '--no-cache',
       '--projects',
-      path.join(__dirname, '__fixtures__', fixture),
-    ],
+      path.join(__dirname, '__fixtures__', project),
+    ].concat(options),
     {
       env: process.env,
     },
   )
     .catch(t => t)
-    .then(({ stderr }) => normalize(stderr));
+    .then(({ stdout, stderr }) => `${normalize(stderr)}\n${normalize(stdout)}`);
 };
 
 module.exports = runJest;
