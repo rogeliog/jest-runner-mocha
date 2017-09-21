@@ -1,4 +1,3 @@
-require('babel-polyfill');
 const throat = require('throat');
 const pify = require('pify');
 const workerFarm = require('worker-farm');
@@ -19,7 +18,7 @@ module.exports = class MochaTestRunner {
   }
 
   // eslint-disable-next-line
-  async runTests(tests, watcher, onStart, onResult, onFailure) {
+  runTests(tests, watcher, onStart, onResult, onFailure) {
     const farm = workerFarm(
       {
         autoStart: true,
@@ -34,31 +33,33 @@ module.exports = class MochaTestRunner {
     const worker = pify(farm);
 
     const runTestInWorker = test =>
-      mutex(async () => {
+      mutex(() => {
         if (watcher.isInterrupted()) {
           throw new CancelRun();
         }
-        await onStart(test);
-        return worker({
-          config: test.context.config,
-          globalConfig: this._globalConfig,
-          testPath: test.path,
-          rawModuleMap: watcher.isWatchMode()
-            ? test.context.moduleMap.getRawModuleMap()
-            : null,
+        return onStart(test).then(() => {
+          return worker({
+            config: test.context.config,
+            globalConfig: this._globalConfig,
+            testPath: test.path,
+            rawModuleMap: watcher.isWatchMode()
+              ? test.context.moduleMap.getRawModuleMap()
+              : null,
+          });
         });
       });
 
-    const onError = async (err, test) => {
-      await onFailure(test, err);
-      if (err.type === 'ProcessTerminatedError') {
-        // eslint-disable-next-line no-console
-        console.error(
-          'A worker process has quit unexpectedly! ' +
-            'Most likely this is an initialization error.',
-        );
-        process.exit(1);
-      }
+    const onError = (err, test) => {
+      return onFailure(test, err).then(() => {
+        if (err.type === 'ProcessTerminatedError') {
+          // eslint-disable-next-line no-console
+          console.error(
+            'A worker process has quit unexpectedly! ' +
+              'Most likely this is an initialization error.',
+          );
+          process.exit(1);
+        }
+      });
     };
 
     const onInterrupt = new Promise((_, reject) => {
