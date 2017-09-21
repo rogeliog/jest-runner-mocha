@@ -4,7 +4,8 @@ exports[`turns a failing mocha tests to Jest test result 1`] = `
 Object {
   "console": null,
   "coverage": undefined,
-  "failureMessage": "
+  "failureMessage": Array [
+    "
     This test failed
 
       [31mThe error message[0m
@@ -16,6 +17,7 @@ Object {
 Error stack
 
 ",
+  ],
   "numFailingTests": 1,
   "numPassingTests": 0,
   "numPendingTests": 0,
@@ -64,7 +66,7 @@ exports[`turns a passing mocha tests to Jest test result 1`] = `
 Object {
   "console": null,
   "coverage": undefined,
-  "failureMessage": null,
+  "failureMessage": Array [],
   "numFailingTests": 0,
   "numPassingTests": 1,
   "numPendingTests": 0,
@@ -104,7 +106,7 @@ Object {
   "coverage": Object {
     "mocked": "coverageData",
   },
-  "failureMessage": null,
+  "failureMessage": Array [],
   "numFailingTests": 0,
   "numPassingTests": 1,
   "numPendingTests": 0,
@@ -142,7 +144,8 @@ exports[`turns a whole mocha tests suite to Jest test result 1`] = `
 Object {
   "console": null,
   "coverage": undefined,
-  "failureMessage": "
+  "failureMessage": Array [
+    "
     This test failed
 
       [31mThe error message[0m
@@ -154,6 +157,7 @@ Object {
 Error stack
 
 ",
+  ],
   "numFailingTests": 0,
   "numPassingTests": 1,
   "numPendingTests": 0,

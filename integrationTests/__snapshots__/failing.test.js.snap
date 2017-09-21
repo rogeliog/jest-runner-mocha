@@ -8,9 +8,17 @@ exports[`Works when it has failing tests 1`] = `
       [31m-1[0m
       [32m+2[0m
       at mocked-stack-trace
+,
+    My tests This test also fails
+      [31mAssertionError [ERR_ASSERTION]: 3 == 4[0m
+      [32m+ expected[0m [31m- actual[0m
+      [31m-3[0m
+      [32m+4[0m
+mocked-stack-trace
   ✕ This test fails
+  ✕ This test also fails
 Test Suites: 1 failed, 1 total
-Tests:       1 failed, 1 total
+Tests:       2 failed, 2 total
 Snapshots:   0 total
 Time:
 Ran all test suites.

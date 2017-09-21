@@ -12,7 +12,7 @@ const toTestResult = ({ stats, tests, jestTestPath, coverage }) => {
   return {
     coverage,
     console: null,
-    failureMessage: toMochaError(tests.find(hasError)),
+    failureMessage: tests.filter(hasError).map(toMochaError),
     numFailingTests: stats.failures,
     numPassingTests: stats.passes,
     numPendingTests: stats.pending,
