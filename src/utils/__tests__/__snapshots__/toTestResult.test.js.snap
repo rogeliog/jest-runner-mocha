@@ -66,7 +66,7 @@ exports[`turns a passing mocha tests to Jest test result 1`] = `
 Object {
   "console": null,
   "coverage": undefined,
-  "failureMessage": Array [],
+  "failureMessage": null,
   "numFailingTests": 0,
   "numPassingTests": 1,
   "numPendingTests": 0,
@@ -106,7 +106,7 @@ Object {
   "coverage": Object {
     "mocked": "coverageData",
   },
-  "failureMessage": Array [],
+  "failureMessage": null,
   "numFailingTests": 0,
   "numPassingTests": 1,
   "numPendingTests": 0,

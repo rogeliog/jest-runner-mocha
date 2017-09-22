@@ -8,11 +8,16 @@ const hasError = (test = {}) => {
 const toMochaError = test =>
   hasError(test) ? `\n${formatMochaError(test)}\n\n` : null;
 
+const getFailureMessages = tests => {
+  const failureMessages = tests.filter(hasError).map(toMochaError);
+  return failureMessages.length ? failureMessages : null;
+};
+
 const toTestResult = ({ stats, tests, jestTestPath, coverage }) => {
   return {
     coverage,
     console: null,
-    failureMessage: tests.filter(hasError).map(toMochaError),
+    failureMessage: getFailureMessages(tests),
     numFailingTests: stats.failures,
     numPassingTests: stats.passes,
     numPendingTests: stats.pending,
