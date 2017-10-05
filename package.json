@@ -24,6 +24,7 @@
   "dependencies": {
     "babel-plugin-istanbul": "4.1.4",
     "babel-register": "6.26.0",
+    "cosmiconfig": "^3.1.0",
     "lodash": "4.17.4",
     "minimatch": "3.0.4",
     "mocha": "3.5.0",

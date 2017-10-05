@@ -1,25 +1,10 @@
 const Mocha = require('mocha');
 const toTestResult = require('./utils/toTestResult');
 const setupCollectCoverage = require('./utils/setupCollectCoverage');
-const path = require('path');
-const fs = require('fs');
-
-const getMochaOpts = config => {
-  const mochaConfigPath = path.join(
-    config.rootDir,
-    'jest-runner-mocha.config.js',
-  );
-
-  if (fs.existsSync(mochaConfigPath)) {
-    // eslint-disable-next-line import/no-dynamic-require, global-require
-    return require(mochaConfigPath);
-  }
-
-  return {};
-};
+const getMochaOptions = require('./utils/getMochaOptions');
 
 const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
-  const mochaOptions = getMochaOpts(config);
+  const { cliOptions: mochaOptions } = getMochaOptions(config);
 
   class Reporter extends Mocha.reporters.Base {
     constructor(runner) {
@@ -56,6 +41,7 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
 
   const mocha = new Mocha({
     reporter: Reporter,
+    timeout: mochaOptions.timeout,
   });
 
   if (mochaOptions.compiler) {

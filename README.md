@@ -47,37 +47,47 @@ module.exports = {
 yarn jest
 ```
 
+## Options
+
+This project uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig), so you can provide config via:
+* a `jest-runner-mocha` property in your `package.json`
+* a `jest-runner-mocha.config.js` JS file
+* a `.jest-runner-mocharc` JSON file
+
+
+In `package.json`
+```json
+{
+  "jest-runner-mocha": {
+    "cliOptions": {
+      // Options here
+    }
+  }
+}
+```
+
+or in `jest-runner-mocha.config.js`
+```js
+module.exports = {
+  cliOptions: {
+    // Options here
+  }
+}
+```
+
+
+### cliOptions
+
+jest-runner-mocha maps some mocha CLI arguments to config options. For example `--ui` is `cliOptions.ui`
+
+|option|example
+|-----|-----|
+|ui|`"ui": "tdd"`
+|timeout|`"timeout": 10000`
+|compiler|`"compiler": "./path/to/babel-register"`
+
 ### Coverage
 
 Coverage works outside of the box, simply `yarn jest -- --coverage`
 
 You can also use other Jest options like [coveragePathIgnorePatterns](http://facebook.github.io/jest/docs/en/configuration.html#coveragepathignorepatterns-array-string) and [coverageReporters](http://facebook.github.io/jest/docs/en/configuration.html#coveragereporters-array-string)
-
-## Custom config options
-
-Create a `jest-runner-mocha.config.js` at the `<rootDir>` or your Jest project.
-
-- `ui`: (Optional) the UI used by mocha
-```js
-// example
-module.exports = {
-  ui: 'tdd',
-}
-```
-
-- `compiler`: (Optional) the used for adding a compile step to your mocha tests
-
-```js
-// example
-module.exports = {
-  compiler: '/absolute/path/to/babel-register/or/other/compiler',
-}
-```
-
-_NOTE: Eventually Jest will eventually have an option for configuring runners that will eliminate the need for `jest-runner-mocha.config.js`_
-
-
-## Known issues
-- It does not support any Mocha options except for `ui` and `compiler`
-- Support for compilers is very limited.
-- Does not support `jest --runInBand`
