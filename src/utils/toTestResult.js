@@ -19,7 +19,7 @@ const toTestResult = ({ stats, tests, failures, jestTestPath, coverage }) => {
   // Merge failed tests that don't exist in the tests array so that we report
   // all tests even if an error occurs in a beforeEach block.
   failures.forEach(test => {
-    if (!tests.includes(test)) {
+    if (!tests.some(t => t === test)) {
       tests.push(test);
     }
   });
