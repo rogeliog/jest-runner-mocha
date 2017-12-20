@@ -16,7 +16,10 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
 
       runner.on('test end', test => tests.push(test));
       runner.on('pass', test => passes.push(test));
-      runner.on('fail', test => failures.push(test));
+      runner.on('fail', (test, err) => {
+        test.err = err;
+        failures.push(test);
+      });
       runner.on('pending', test => pending.push(test));
       runner.on('end', () => {
         try {

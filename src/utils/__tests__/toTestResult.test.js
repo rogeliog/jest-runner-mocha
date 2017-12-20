@@ -41,6 +41,7 @@ it('turns a passing mocha tests to Jest test result', () => {
         failures: 0,
       },
       tests: [passingTest],
+      failures: [],
     }),
   ).toMatchSnapshot();
 });
@@ -58,6 +59,7 @@ it('turns a passing mocha tests to Jest test result with coverage', () => {
         failures: 0,
       },
       tests: [passingTest],
+      failures: [],
     }),
   ).toMatchSnapshot();
 });
@@ -74,6 +76,7 @@ it('turns a failing mocha tests to Jest test result', () => {
         failures: 1,
       },
       tests: [failingTest],
+      failures: [],
     }),
   ).toMatchSnapshot();
 });
@@ -90,6 +93,7 @@ it('turns a whole mocha tests suite to Jest test result', () => {
         failures: 0,
       },
       tests: [passingTest, passingTest2, failingTest],
+      failures: [],
     }),
   ).toMatchSnapshot();
 });
