@@ -9,18 +9,21 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
   class Reporter extends Mocha.reporters.Base {
     constructor(runner) {
       super(runner);
-      const tests = [];
-      const pending = [];
-      const failures = [];
-      const passes = [];
+      const tests = new Set();
+      const pending = new Set();
+      const failures = new Set();
+      const passes = new Set();
 
-      runner.on('test end', test => tests.push(test));
-      runner.on('pass', test => passes.push(test));
+      runner.on('test end', test => tests.add(test));
+      runner.on('pass', test => passes.add(test));
       runner.on('fail', (test, err) => {
         test.err = err;
-        failures.push(test);
+        failures.add(test);
+
+        // Ensure we include failing tests in our final set of tests.
+        tests.add(test);
       });
-      runner.on('pending', test => pending.push(test));
+      runner.on('pending', test => pending.add(test));
       runner.on('end', () => {
         try {
           workerCallback(
