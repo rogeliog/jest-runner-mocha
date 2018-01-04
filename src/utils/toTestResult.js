@@ -48,10 +48,11 @@ const toTestResult = ({ stats, tests, failures, jestTestPath, coverage }) => {
     testExecError: null,
     testFilePath: jestTestPath,
     testResults: effectiveTests.map(test => {
+      const failureMessage = toMochaError(test);
       return {
         ancestorTitles: [],
         duration: test.duration / 1000,
-        failureMessages: toMochaError(test),
+        failureMessages: failureMessage ? [failureMessage] : [],
         fullName: test.fullTitle(),
         numPassingAsserts: hasError(test) ? 1 : 0,
         status: hasError(test) ? 'failed' : 'passed',

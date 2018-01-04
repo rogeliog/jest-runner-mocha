@@ -41,7 +41,8 @@ Error stack
     Object {
       "ancestorTitles": Array [],
       "duration": 0.004,
-      "failureMessages": "
+      "failureMessages": Array [
+        "
     This test failed
 
       [31mThe error message[0m
@@ -53,6 +54,7 @@ Error stack
 Error stack
 
 ",
+      ],
       "fullName": "This test failed",
       "numPassingAsserts": 1,
       "status": "failed",
@@ -90,7 +92,7 @@ Object {
     Object {
       "ancestorTitles": Array [],
       "duration": 0.001,
-      "failureMessages": null,
+      "failureMessages": Array [],
       "fullName": "This test passes[1]",
       "numPassingAsserts": 0,
       "status": "passed",
@@ -130,7 +132,7 @@ Object {
     Object {
       "ancestorTitles": Array [],
       "duration": 0.001,
-      "failureMessages": null,
+      "failureMessages": Array [],
       "fullName": "This test passes[1]",
       "numPassingAsserts": 0,
       "status": "passed",
@@ -181,7 +183,7 @@ Error stack
     Object {
       "ancestorTitles": Array [],
       "duration": 0.001,
-      "failureMessages": null,
+      "failureMessages": Array [],
       "fullName": "This test passes[1]",
       "numPassingAsserts": 0,
       "status": "passed",
@@ -190,7 +192,7 @@ Error stack
     Object {
       "ancestorTitles": Array [],
       "duration": 0.004,
-      "failureMessages": null,
+      "failureMessages": Array [],
       "fullName": "This test also passes[2]",
       "numPassingAsserts": 0,
       "status": "passed",
@@ -199,7 +201,8 @@ Error stack
     Object {
       "ancestorTitles": Array [],
       "duration": 0.004,
-      "failureMessages": "
+      "failureMessages": Array [
+        "
     This test failed
 
       [31mThe error message[0m
@@ -211,6 +214,7 @@ Error stack
 Error stack
 
 ",
+      ],
       "fullName": "This test failed",
       "numPassingAsserts": 1,
       "status": "failed",
