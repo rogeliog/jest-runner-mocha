@@ -85,6 +85,7 @@ jest-runner-mocha maps some mocha CLI arguments to config options. For example `
 |ui|`"ui": "tdd"`
 |timeout|`"timeout": 10000`
 |compiler|`"compiler": "./path/to/babel-register"`
+|file|`"file": ["./path/to/include.js", "/supports/multiple/files.js"`]
 
 ### Coverage
 
