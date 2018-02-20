@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-mocha",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
   "description": "An experimental Mocha runner for Jest",
@@ -10,15 +10,16 @@
     "url": "https://github.com/rogeliog/jest-runner-mocha.git"
   },
   "homepage": "https://github.com/rogeliog/jest-runner-mocha",
-  "files": ["build/"],
+  "files": [
+    "build/"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
     "watch": "babel src -w --ignore **/*.test.js,integration -d build",
     "build": "babel src --ignore **/*.test.js,integration -d build",
     "prepublish": "yarn build",
-    "format":
-      "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
+    "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
     "babel-plugin-istanbul": "4.1.4",
