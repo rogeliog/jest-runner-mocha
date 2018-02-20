@@ -10,6 +10,17 @@ const normalize = (jestConfig, { cliOptions: rawCliOptions = {} }) => {
     cliOptions.compiler = path.resolve(jestConfig.rootDir, cliOptions.compiler);
   }
 
+  if (cliOptions.file) {
+    const file = [].concat(cliOptions.file);
+    cliOptions.file = file.map(f => {
+      if (path.isAbsolute(f)) {
+        return f;
+      }
+
+      return path.resolve(jestConfig.rootDir, f);
+    });
+  }
+
   return { cliOptions };
 };
 

@@ -59,6 +59,10 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
     coveragePathIgnorePatterns: config.coveragePathIgnorePatterns,
   });
 
+  if (mochaOptions.file) {
+    mochaOptions.file.forEach(file => mocha.addFile(file));
+  }
+
   mocha.addFile(testPath);
 
   const onEnd = () => {
