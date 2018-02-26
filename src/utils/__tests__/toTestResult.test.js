@@ -4,6 +4,11 @@ const jestTestPath = 'path/to/file';
 const start = Date.UTC(2000, 0, 1, 0, 0, 0, 0);
 const end = start + 1000;
 
+const withDescribe = (title, test) =>
+  Object.assign({}, test, {
+    parent: { title },
+  });
+
 const passingTest = {
   duration: 1,
   title: 'This test passes[1]',
@@ -92,7 +97,11 @@ it('turns a whole mocha tests suite to Jest test result', () => {
         pending: 0,
         failures: 0,
       },
-      tests: [passingTest, passingTest2, failingTest],
+      tests: [
+        passingTest,
+        withDescribe('Some describe block', passingTest2),
+        failingTest,
+      ],
       failures: [],
     }),
   ).toMatchSnapshot();

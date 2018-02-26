@@ -190,7 +190,9 @@ Error stack
       "title": "This test passes[1]",
     },
     Object {
-      "ancestorTitles": Array [],
+      "ancestorTitles": Array [
+        "Some describe block",
+      ],
       "duration": 0.004,
       "failureMessages": Array [],
       "fullName": "This test also passes[2]",

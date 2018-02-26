@@ -2,7 +2,8 @@
 
 exports[`Works when it has only passing tests 1`] = `
 "PASS integrationTests/__fixtures__/passing/__mocha__/__tests__/file.test.js
-  ✓ This test passes
+  My tests
+    ✓ This test passes
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
@@ -13,7 +14,8 @@ Ran all test suites.
 
 exports[`Works when it has only passing tests and --coverage 1`] = `
 "PASS integrationTests/__fixtures__/passing/__mocha__/__tests__/file.test.js
-  ✓ This test passes
+  My tests
+    ✓ This test passes
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total

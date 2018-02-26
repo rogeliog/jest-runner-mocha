@@ -5,7 +5,8 @@ exports[`Works when it has an error outside the tests 1`] = `
     My tests This test thows an error
 Error: Some error message
       at mocked-stack-trace
-  ✕ This test thows an error
+  My tests
+    ✕ This test thows an error
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
