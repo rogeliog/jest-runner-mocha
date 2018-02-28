@@ -13,6 +13,14 @@ const getFailureMessages = tests => {
   return failureMessages.length ? failureMessages : null;
 };
 
+const getAncestorTitle = test => {
+  if (test.parent && test.parent.title) {
+    return [test.parent.title].concat(getAncestorTitle(test.parent));
+  }
+
+  return [];
+};
+
 const toTestResult = ({ stats, tests, failures, jestTestPath, coverage }) => {
   const effectiveTests = tests;
 
@@ -50,7 +58,7 @@ const toTestResult = ({ stats, tests, failures, jestTestPath, coverage }) => {
     testResults: effectiveTests.map(test => {
       const failureMessage = toMochaError(test);
       return {
-        ancestorTitles: [],
+        ancestorTitles: getAncestorTitle(test),
         duration: test.duration / 1000,
         failureMessages: failureMessage ? [failureMessage] : [],
         fullName: test.fullTitle(),
