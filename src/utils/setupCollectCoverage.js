@@ -29,7 +29,7 @@ const setupCollectCoverage = ({
         coveragePathIgnorePatterns.some(pattern => minimatch(filename, pattern))
       );
     },
-    babelrc: false,
+    babelrc: true,
     // compact: true,
     retainLines: true,
     sourceMaps: 'inline',
