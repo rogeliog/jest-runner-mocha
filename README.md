@@ -1,12 +1,19 @@
-# jest-runner-mocha
-
 [![Build Status](https://travis-ci.org/rogeliog/jest-runner-mocha.svg?branch=master)](https://travis-ci.org/rogeliog/jest-runner-mocha) [![npm version](https://badge.fury.io/js/jest-runner-mocha.svg)](https://badge.fury.io/js/jest-runner-mocha)
 
-An experimental Mocha runner for Jest
+<div align="center">
+  <!-- replace with accurate logo e.g from https://worldvectorlogo.com/ -->
+  <img width="150" height="150" src="https://cdn.worldvectorlogo.com/logos/mocha.svg">
+  <a href="https://facebook.github.io/jest/">
+    <img width="150" height="150" vspace="" hspace="25" src="https://cdn.worldvectorlogo.com/logos/jest.svg">
+  </a>
+  <h1>jest-runner-mocha</h1>
+  <p>Mocha runner for Jest</p>
+  <p>This makes it easy to integrate existing Mocha projects with Jest.</p>
+</div>
 
-This makes it easy to integrate existing Mocha projects with Jest.
-
-![runner](https://user-images.githubusercontent.com/574806/30088955-728bf97e-925e-11e7-9b25-6aac237085ca.gif)
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/574806/30088955-728bf97e-925e-11e7-9b25-6aac237085ca.gif">
+</div>
 
 
 ## Usage
