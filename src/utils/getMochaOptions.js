@@ -3,7 +3,7 @@ const cosmiconfig = require('cosmiconfig');
 
 const explorer = cosmiconfig('jest-runner-mocha', { sync: true });
 
-const normalize = (jestConfig, { cliOptions: rawCliOptions = {} }) => {
+  const normalize = (jestConfig, { cliOptions: rawCliOptions = {}, coverageOptions = { allowBabelRc: false }}) => {
   const cliOptions = Object.assign({}, rawCliOptions);
 
   if (cliOptions.compiler && !path.isAbsolute(cliOptions.compiler)) {
@@ -21,7 +21,7 @@ const normalize = (jestConfig, { cliOptions: rawCliOptions = {} }) => {
     });
   }
 
-  return { cliOptions };
+  return { cliOptions, coverageOptions };
 };
 
 const getMochaOptions = jestConfig => {

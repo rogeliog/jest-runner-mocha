@@ -4,6 +4,7 @@ const setupCollectCoverage = ({
   rootDir,
   collectCoverage,
   coveragePathIgnorePatterns,
+  allowBabelRc
 }) => {
   if (!collectCoverage) {
     return;
@@ -29,7 +30,7 @@ const setupCollectCoverage = ({
         coveragePathIgnorePatterns.some(pattern => minimatch(filename, pattern))
       );
     },
-    babelrc: false,
+    babelrc: allowBabelRc,
     // compact: true,
     retainLines: true,
     sourceMaps: 'inline',

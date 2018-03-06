@@ -4,7 +4,7 @@ const setupCollectCoverage = require('./utils/setupCollectCoverage');
 const getMochaOptions = require('./utils/getMochaOptions');
 
 const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
-  const { cliOptions: mochaOptions } = getMochaOptions(config);
+  const { cliOptions: mochaOptions, coverageOptions } = getMochaOptions(config);
 
   class Reporter extends Mocha.reporters.Base {
     constructor(runner) {
@@ -57,6 +57,7 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
     rootDir: config.rootDir,
     collectCoverage: globalConfig.collectCoverage,
     coveragePathIgnorePatterns: config.coveragePathIgnorePatterns,
+    allowBabelRc: coverageOptions.useBabelRc
   });
 
   if (mochaOptions.file) {
