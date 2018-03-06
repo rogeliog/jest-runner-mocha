@@ -61,6 +61,9 @@ In `package.json`
   "jest-runner-mocha": {
     "cliOptions": {
       // Options here
+    },
+    "coverageOptions": {
+      // Options here
     }
   }
 }
@@ -70,6 +73,9 @@ or in `jest-runner-mocha.config.js`
 ```js
 module.exports = {
   cliOptions: {
+    // Options here
+  },
+  "coverageOptions": {
     // Options here
   }
 }
@@ -86,6 +92,14 @@ jest-runner-mocha maps some mocha CLI arguments to config options. For example `
 |timeout|`"timeout": 10000`
 |compiler|`"compiler": "./path/to/babel-register"`
 |file|`"file": ["./path/to/include.js", "/supports/multiple/files.js"`]
+
+### coverageOptions
+
+jest-runner-mocha has some optional configuration for code coverage
+
+|option|example|description|
+|-----|-----|-----|
+|useBabelRc|`"useBabelRc": true`|read .babelrc when instrumenting for code coverage (required if you transpile your code with babel).|
 
 ### Coverage
 
