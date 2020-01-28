@@ -57,7 +57,7 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
     rootDir: config.rootDir,
     collectCoverage: globalConfig.collectCoverage,
     coveragePathIgnorePatterns: config.coveragePathIgnorePatterns,
-    allowBabelRc: coverageOptions.useBabelRc
+    allowBabelRc: coverageOptions.useBabelRc,
   });
 
   if (mochaOptions.file) {
@@ -65,16 +65,11 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
   }
 
   mocha.addFile(testPath);
-
-  const onEnd = () => {
-    process.on('exit', () => process.exit());
-  };
-
   try {
     if (mochaOptions.ui) {
-      mocha.ui(mochaOptions.ui).run(onEnd);
+      mocha.ui(mochaOptions.ui).run();
     } else {
-      mocha.run(onEnd);
+      mocha.run();
     }
   } catch (e) {
     workerCallback(e);
