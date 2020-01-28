@@ -1,5 +1,11 @@
 ## master
 
+
+## 1.0.0
+
+* Fix Emitter issue.
+* Allow using any version of mocha.
+
 ## 0.6.0
 
 ### Features

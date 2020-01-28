@@ -1,5 +1,5 @@
 {
-  "name": "jest-runner-mocha",
+  "name": "@kernel-panic/jest-runner-mocha",
   "version": "1.0.0",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
