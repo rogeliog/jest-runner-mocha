@@ -70,7 +70,7 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
     config.setupFiles.forEach(path => {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       const module = require(path);
-      if (module.clearMocks) {
+      if (config.clearMocks && module.clearMocks) {
         clearMocks = module.clearMocks;
       }
     });
