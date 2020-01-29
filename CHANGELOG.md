@@ -1,5 +1,9 @@
 ## master
 
+## 1.1.0
+
+* Add support for setupFiles jest option.
+* Add support for custom clearMocks implementation and calls (see README).
 
 ## 1.0.0
 

@@ -1,33 +1,26 @@
 [![Build Status](https://travis-ci.org/rogeliog/jest-runner-mocha.svg?branch=master)](https://travis-ci.org/rogeliog/jest-runner-mocha) [![npm version](https://badge.fury.io/js/jest-runner-mocha.svg)](https://badge.fury.io/js/jest-runner-mocha)
 
-<div align="center">
-  <!-- replace with accurate logo e.g from https://worldvectorlogo.com/ -->
-  <img width="150" height="150" src="https://cdn.worldvectorlogo.com/logos/mocha.svg">
-  <a href="https://facebook.github.io/jest/">
-    <img width="150" height="150" vspace="" hspace="25" src="https://cdn.worldvectorlogo.com/logos/jest.svg">
-  </a>
-  <h1>jest-runner-mocha</h1>
-  <p>Mocha runner for Jest</p>
-  <p>This makes it easy to integrate existing Mocha projects with Jest.</p>
-</div>
+# It's a fork!
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/574806/30088955-728bf97e-925e-11e7-9b25-6aac237085ca.gif">
-</div>
+It is an experimental  fork of https://github.com/rogeliog/jest-runner-mocha with some experimental
+features:
 
+* Support for mocha custom version
+* Support for setupFiles
+* Support for custom clearMocks implementation (ex. for sinon)
 
 ## Usage
 
 ### Install
 
-Install `jest`_(it needs Jest 21+)_ and `jest-runner-mocha`
+Install `jest`_(it needs Jest 21+)_ and `@kernel-panic/jest-runner-mocha`
 
 ```bash
-yarn add --dev jest jest-runner-mocha
+yarn add --dev jest @kernel-panic/jest-runner-mocha
 
 # or with NPM
 
-npm install --save-dev jest jest-runner-mocha
+npm install --save-dev jest @kernel-panic/jest-runner-mocha
 
 ```
 
@@ -37,7 +30,7 @@ In your `package.json`
 ```json
 {
   "jest": {
-    "runner": "jest-runner-mocha"
+    "runner": "@kernel-panic/jest-runner-mocha"
   }
 }
 ```
@@ -45,7 +38,7 @@ In your `package.json`
 Or in `jest.config.js`
 ```js
 module.exports = {
-  runner: 'jest-runner-mocha',
+  runner: '@kernel-panic/jest-runner-mocha',
 }
 ```
 
@@ -113,3 +106,20 @@ jest-runner-mocha has some optional configuration for code coverage
 Coverage works outside of the box, simply `yarn jest -- --coverage`
 
 You can also use other Jest options like [coveragePathIgnorePatterns](http://facebook.github.io/jest/docs/en/configuration.html#coveragepathignorepatterns-array-string) and [coverageReporters](http://facebook.github.io/jest/docs/en/configuration.html#coveragereporters-array-string)
+
+### Custom clearMocks function
+
+Just make an export with a clearMocks function in your setupFiles, like this:
+
+```js
+'use strict';
+
+const sinon = require('sinon');
+
+module.exports = {
+	clearMocks: () => {
+		sinon.sandbox.restore();
+	}
+};
+
+```
