@@ -5,6 +5,7 @@ const getMochaOptions = require('./utils/getMochaOptions');
 
 const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
   const { cliOptions: mochaOptions, coverageOptions } = getMochaOptions(config);
+  let clearMocks;
 
   class Reporter extends Mocha.reporters.Base {
     constructor(runner) {
@@ -14,6 +15,11 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
       const failures = [];
       const passes = [];
 
+      runner.on('suite', () => {
+        if (clearMocks) {
+          clearMocks();
+        }
+      });
       runner.on('test end', test => tests.push(test));
       runner.on('pass', test => passes.push(test));
       runner.on('fail', (test, err) => {
@@ -57,9 +63,18 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
     rootDir: config.rootDir,
     collectCoverage: globalConfig.collectCoverage,
     coveragePathIgnorePatterns: config.coveragePathIgnorePatterns,
-    allowBabelRc: coverageOptions.useBabelRc
+    allowBabelRc: coverageOptions.useBabelRc,
   });
 
+  if (config.setupFiles) {
+    config.setupFiles.forEach(path => {
+      // eslint-disable-next-line global-require,import/no-dynamic-require
+      const module = require(path);
+      if (module.clearMocks) {
+        clearMocks = module.clearMocks;
+      }
+    });
+  }
   if (mochaOptions.file) {
     mochaOptions.file.forEach(file => mocha.addFile(file));
   }
