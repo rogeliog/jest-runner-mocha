@@ -8,9 +8,9 @@ const hasError = (test = {}) => {
 const toMochaError = test =>
   hasError(test) ? `\n${formatMochaError(test)}\n\n` : null;
 
-const getFailureMessages = tests => {
+const getFailureMessage = tests => {
   const failureMessages = tests.filter(hasError).map(toMochaError);
-  return failureMessages.length ? failureMessages : null;
+  return failureMessages.length ? failureMessages.join('') : null;
 };
 
 const getAncestorTitle = test => {
@@ -35,7 +35,7 @@ const toTestResult = ({ stats, tests, failures, jestTestPath, coverage }) => {
   return {
     coverage,
     console: null,
-    failureMessage: getFailureMessages(effectiveTests),
+    failureMessage: getFailureMessage(effectiveTests),
     numFailingTests: stats.failures,
     numPassingTests: stats.passes,
     numPendingTests: stats.pending,
