@@ -1,5 +1,9 @@
 ## master
 
+## 2.1.1
+
+* Remove packages which are not used any more.
+
 ## 2.1.0
 
 * Use create-jest-runner from [patrickdawson](https://github.com/patrickdawson/jest-runner-mocha).
