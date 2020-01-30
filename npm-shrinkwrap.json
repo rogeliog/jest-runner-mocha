@@ -1,6 +1,6 @@
 {
   "name": "@kernel-panic/jest-runner-mocha",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -879,6 +879,7 @@
       "version": "0.1.4",
       "resolved": "https://registry.yarnpkg.com/errno/-/errno-0.1.4.tgz",
       "integrity": "sha1-uJbiOp5ei6M4cfyZar02NfyaHH0=",
+      "dev": true,
       "requires": {
         "prr": "~0.0.0"
       }
@@ -3691,11 +3692,6 @@
       "integrity": "sha1-M+8wxcd9TqIcWlOGnZG1bY8lVeU=",
       "dev": true
     },
-    "pify": {
-      "version": "3.0.0",
-      "resolved": "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz",
-      "integrity": "sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY="
-    },
     "pinkie": {
       "version": "2.0.4",
       "resolved": "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz",
@@ -3778,7 +3774,8 @@
     "prr": {
       "version": "0.0.0",
       "resolved": "https://registry.yarnpkg.com/prr/-/prr-0.0.0.tgz",
-      "integrity": "sha1-GoS4WQgyVQFBGFPQCB7j+obikmo="
+      "integrity": "sha1-GoS4WQgyVQFBGFPQCB7j+obikmo=",
+      "dev": true
     },
     "pseudomap": {
       "version": "1.0.2",
@@ -4604,6 +4601,7 @@
       "version": "1.5.0",
       "resolved": "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.5.0.tgz",
       "integrity": "sha1-rf3wzUBYFGXtCh9kj5c1cir9XI0=",
+      "dev": true,
       "requires": {
         "errno": "^0.1.4",
         "xtend": "^4.0.1"
@@ -4654,7 +4652,8 @@
     "xtend": {
       "version": "4.0.1",
       "resolved": "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz",
-      "integrity": "sha1-pcbVMr5lbiPbgg77lDofBJmNY68="
+      "integrity": "sha1-pcbVMr5lbiPbgg77lDofBJmNY68=",
+      "dev": true
     },
     "y18n": {
       "version": "3.2.1",
