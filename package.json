@@ -1,6 +1,6 @@
 {
   "name": "@kernel-panic/jest-runner-mocha",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "src/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>, Jehy",
   "description": "An experimental Mocha runner for Jest",

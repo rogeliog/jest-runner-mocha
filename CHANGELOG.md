@@ -1,4 +1,9 @@
 ## master
+
+## 2.0.1
+
+* Use npm-shrinkwrap.json to fix transitive deps and testing without yarn.
+
 ## 2.0.0
 
 * Drop node 4 support, get rid of build process and babel.
