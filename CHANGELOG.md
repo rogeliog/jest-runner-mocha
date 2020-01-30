@@ -1,5 +1,9 @@
 ## master
 
+## 2.1.2
+
+* Fix error messages display.
+
 ## 2.1.1
 
 * Remove packages which are not used any more.
