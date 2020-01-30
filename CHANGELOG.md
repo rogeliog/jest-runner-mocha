@@ -1,4 +1,7 @@
 ## master
+## 2.0.0
+
+* Drop node 4 support, get rid of build process and babel.
 
 ## 1.1.2
 * Replace setupFiles with setupFilesAfterEnv option.
