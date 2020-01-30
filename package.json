@@ -1,7 +1,7 @@
 {
   "name": "@kernel-panic/jest-runner-mocha",
   "version": "1.1.2",
-  "main": "build/index.js",
+  "main": "src/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>, Jehy",
   "description": "An experimental Mocha runner for Jest",
   "license": "MIT",
@@ -10,15 +10,9 @@
     "url": "https://github.com/jehy/jest-runner-mocha.git"
   },
   "homepage": "https://github.com/jehy/jest-runner-mocha",
-  "files": [
-    "build/"
-  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "watch": "babel src -w --ignore **/*.test.js,integration -d build",
-    "build": "babel src --ignore **/*.test.js,integration -d build",
-    "prepublish": "yarn build",
     "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
@@ -32,9 +26,6 @@
     "worker-farm": "1.5.0"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-jest": "21.0.0",
-    "babel-preset-env": "1.6.0",
     "eslint": "4.5.0",
     "eslint-config-airbnb-base": "11.3.2",
     "eslint-config-prettier": "2.3.0",
