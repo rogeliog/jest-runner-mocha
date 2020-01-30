@@ -1,8 +1,12 @@
 ## master
 
+## 2.1.0
+
+* Use create-jest-runner from [patrickdawson](https://github.com/patrickdawson/jest-runner-mocha).
+
 ## 2.0.1
 
-* Use npm-shrinkwrap.json to fix transitive deps and testing without yarn.
+* Use npm-shrinkwrap.json to fix transitive deps and testing without yarn. ([#26](https://github.com/rogeliog/jest-runner-mocha/issues/26))
 
 ## 2.0.0
 
@@ -17,12 +21,12 @@
 ## 1.1.0
 
 * Add support for setupFiles jest option.
-* Add support for custom clearMocks implementation and calls (see README).
+* Add support for custom clearMocks implementation and calls (see README). ([#24](https://github.com/rogeliog/jest-runner-mocha/issues/24))
 
 ## 1.0.0
 
-* Fix Emitter issue.
-* Allow using any version of mocha.
+* Fix Emitter issue. ([#21](https://github.com/rogeliog/jest-runner-mocha/issues/21))
+* Allow using any version of mocha. ([#6](https://github.com/rogeliog/jest-runner-mocha/issues/6))
 
 ## 0.6.0
 

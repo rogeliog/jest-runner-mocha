@@ -8,6 +8,7 @@ features:
 * Support for mocha custom version
 * Support for `setupFilesAfterEnv`
 * Support for custom `clearMocks` implementation (ex. for sinon)
+* See more in changelog!
 
 ## Usage
 
