@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rogeliog/jest-runner-mocha.svg?branch=master)](https://travis-ci.org/rogeliog/jest-runner-mocha) [![npm version](https://badge.fury.io/js/jest-runner-mocha.svg)](https://badge.fury.io/js/jest-runner-mocha)
+[![Build Status](https://travis-ci.com/jehy/jest-runner-mocha.svg?branch=master)](https://travis-ci.org/jehy/jest-runner-mocha) [![npm version](https://badge.fury.io/js/%40kernel-panic%2Fjest-runner-mocha.svg)](https://badge.fury.io/js/%40kernel-panic%2Fjest-runner-mocha)
 
 # It's a fork!
 
