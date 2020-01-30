@@ -66,8 +66,8 @@ const runMocha = ({ config, testPath, globalConfig }, workerCallback) => {
     allowBabelRc: coverageOptions.useBabelRc,
   });
 
-  if (config.setupFiles) {
-    config.setupFiles.forEach(path => {
+  if (config.setupFilesAfterEnv) {
+    config.setupFilesAfterEnv.forEach(path => {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       const module = require(path);
       if (config.clearMocks && module.clearMocks) {
