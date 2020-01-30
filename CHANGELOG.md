@@ -1,5 +1,8 @@
 ## master
 
+## 1.1.2
+* Replace setupFiles with setupFilesAfterEnv option.
+
 ## 1.1.1
 * Only use clearMocks if option passed from jest.
 

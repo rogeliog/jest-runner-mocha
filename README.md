@@ -6,8 +6,8 @@ It is an experimental  fork of https://github.com/rogeliog/jest-runner-mocha wit
 features:
 
 * Support for mocha custom version
-* Support for setupFiles
-* Support for custom clearMocks implementation (ex. for sinon)
+* Support for `setupFilesAfterEnv`
+* Support for custom `clearMocks` implementation (ex. for sinon)
 
 ## Usage
 
@@ -109,7 +109,7 @@ You can also use other Jest options like [coveragePathIgnorePatterns](http://fac
 
 ### Custom clearMocks function
 
-Just make an export with a clearMocks function in your setupFiles, like this:
+Just make an export with a clearMocks function in your `setupFilesAfterEnv`, like this:
 
 ```js
 'use strict';
