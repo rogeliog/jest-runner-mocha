@@ -3,12 +3,10 @@ FROM node:${NODE_VERSION}
 
 WORKDIR /app
 
-COPY package.json yarn.lock /app/
+COPY package.json npm-shrinkwrap.json /app/
 
-RUN yarn --ignore-scripts
+RUN npm ci
 
 COPY . .
-
-RUN yarn build
 
 CMD ["yarn", "test"]

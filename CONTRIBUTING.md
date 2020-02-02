@@ -12,20 +12,16 @@
    Note:
    Replace `<your_username>` with your GitHub username
 
-2. jest-runner-mocha uses [Yarn](https://code.facebook.com/posts/1840075619545360)
-   for running development scripts. If you haven't already done so,
-   please [install yarn](https://yarnpkg.com/en/docs/install).
-
-3. Run `yarn`.
+2. Install dependencies.
    
      ```sh
-    yarn
+    npm install
     ```
 
 5. If you've changed APIs, update the documentation.
 
-6. Ensure the test suite passes via `yarn test`. To run the test suite you
+6. Ensure the test suite passes via `npm test`. To run the test suite you
 
    ```sh
-   yarn test
+   npm test
    ```

@@ -17,9 +17,6 @@ features:
 Install `jest`_(it needs Jest 21+)_ and `@kernel-panic/jest-runner-mocha`
 
 ```bash
-yarn add --dev jest @kernel-panic/jest-runner-mocha
-
-# or with NPM
 
 npm install --save-dev jest @kernel-panic/jest-runner-mocha
 
@@ -45,7 +42,7 @@ module.exports = {
 
 ### Run Jest
 ```bash
-yarn jest
+npx jest
 ```
 
 ## Options
@@ -104,7 +101,7 @@ jest-runner-mocha has some optional configuration for code coverage
 
 ### Coverage
 
-Coverage works outside of the box, simply `yarn jest -- --coverage`
+Coverage works outside of the box, simply `npx jest -- --coverage`
 
 You can also use other Jest options like [coveragePathIgnorePatterns](http://facebook.github.io/jest/docs/en/configuration.html#coveragepathignorepatterns-array-string) and [coverageReporters](http://facebook.github.io/jest/docs/en/configuration.html#coveragereporters-array-string)
 
