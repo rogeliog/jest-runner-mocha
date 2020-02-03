@@ -16,8 +16,7 @@
     "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
-    "babel-plugin-istanbul": "4.1.4",
-    "babel-register": "6.26.0",
+    "@babel/register": "7.8.3",
     "cosmiconfig": "^3.1.0",
     "create-jest-runner": "^0.4.1",
     "minimatch": "3.0.4"
@@ -35,6 +34,8 @@
     "prettier": "1.7.4"
   },
   "peerDependencies": {
+    "@babel/core": "^7.8.4",
+    "babel-plugin-istanbul": "^6.0.0",
     "mocha": "*"
   }
 }

@@ -4,14 +4,14 @@ const setupCollectCoverage = ({
   rootDir,
   collectCoverage,
   coveragePathIgnorePatterns,
-  allowBabelRc
+  allowBabelRc,
 }) => {
   if (!collectCoverage) {
     return;
   }
 
   // eslint-disable-next-line import/no-dynamic-require, global-require
-  const register = require('babel-register');
+  const register = require('@babel/register');
   register({
     plugins: [
       [
@@ -24,12 +24,13 @@ const setupCollectCoverage = ({
         },
       ],
     ],
-    ignore: filename => {
-      return (
-        /node_modules/.test(filename) ||
-        coveragePathIgnorePatterns.some(pattern => minimatch(filename, pattern))
-      );
-    },
+    ignore: [
+      /node_modules/,
+      filename =>
+        coveragePathIgnorePatterns.some(pattern =>
+          minimatch(filename, pattern),
+        ),
+    ],
     babelrc: allowBabelRc,
     // compact: true,
     retainLines: true,
