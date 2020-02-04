@@ -1,10 +1,12 @@
 const path = require('path');
-const cosmiconfig = require('cosmiconfig');
+const { cosmiconfigSync } = require('cosmiconfig');
 
-const explorer = cosmiconfig('jest-runner-mocha', { sync: true });
-
-  const normalize = (jestConfig, { cliOptions: rawCliOptions = {}, coverageOptions = { allowBabelRc: false }}) => {
-  const cliOptions = Object.assign({}, rawCliOptions);
+function normalize(jestConfig, options) {
+  const {
+    cliOptions: rawCliOptions = {},
+    coverageOptions = { allowBabelRc: false },
+  } = options;
+  const cliOptions = { ...rawCliOptions };
 
   if (cliOptions.compiler && !path.isAbsolute(cliOptions.compiler)) {
     cliOptions.compiler = path.resolve(jestConfig.rootDir, cliOptions.compiler);
@@ -22,16 +24,19 @@ const explorer = cosmiconfig('jest-runner-mocha', { sync: true });
   }
 
   return { cliOptions, coverageOptions };
-};
+}
 
-const getMochaOptions = jestConfig => {
-  const result = explorer.load(jestConfig.rootDir);
-
-  if (result) {
-    return normalize(jestConfig, result.config);
+function getMochaOptions(jestConfig) {
+  const explorerSync = cosmiconfigSync('jest-runner-mocha');
+  const searchSyncResult = explorerSync.search();
+  if (searchSyncResult && !searchSyncResult.isEmpty) {
+    const result = explorerSync.load(searchSyncResult.filepath);
+    if (result) {
+      return normalize(jestConfig, result.config);
+    }
   }
 
   return normalize(jestConfig, {});
-};
+}
 
 module.exports = getMochaOptions;
