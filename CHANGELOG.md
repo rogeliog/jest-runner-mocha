@@ -1,5 +1,11 @@
 ## master
 
+## 3.0.0
+
+Update all deps (can be breaking change), remove lock files, fix tests.
+
+Should be more stable now.
+
 ## 2.1.2
 
 * Fix error messages display.
