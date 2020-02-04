@@ -3,10 +3,8 @@ FROM node:${NODE_VERSION}
 
 WORKDIR /app
 
-COPY package.json npm-shrinkwrap.json /app/
-
-RUN npm ci
+RUN npm i
 
 COPY . .
 
-CMD ["yarn", "test"]
+CMD ["npm", "test"]
