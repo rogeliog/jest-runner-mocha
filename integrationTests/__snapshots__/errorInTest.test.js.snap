@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Works when it has an error in the tests 1`] = `
-"FAIL integrationTests/__fixtures__/errorInTest/__mocha__/__tests__/file.test.js ● Test suite failed to run Some error message 2 | const assert = require('assert'); 3 | > 4 | throw new Error('Some error message'); | ^ 5 | 6 | describe('My tests', () => { 7 | it('This is a test', () => { at mocked-stack-trace Test Suites: 1 failed, 1 total Tests: 0 total Snapshots: 0 total Time: Ran all test suites.
+"FAIL integrationTests/__fixtures__/errorInTest/__mocha__/__tests__/file.test.js
+● Test suite failed to run
+Some error message
+2 | const assert = require('assert');
+3 |
+> 4 | throw new Error('Some error message');
+| ^
+5 |
+6 | describe('My tests', () => {
+7 | it('This is a test', () => {
+at mocked-stack-trace
+Test Suites: 1 failed, 1 total
+Tests: 0 total
+Snapshots: 0 total
+Time:
+Ran all test suites.
+
 "
 `;

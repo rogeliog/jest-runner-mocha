@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Works when it has failing tests 1`] = `
-"FAIL integrationTests/__fixtures__/failing/__mocha__/__tests__/file.test.js My tests ✕ This test fails My tests This test fails AssertionError: 1 == 2 + expected - actual -1 +2 at mocked-stack-trace Test Suites: 1 failed, 1 total Tests: 1 failed, 1 total Snapshots: 0 total Time: Ran all test suites.
+"FAIL integrationTests/__fixtures__/failing/__mocha__/__tests__/file.test.js
+My tests
+✕ This test fails
+My tests This test fails
+AssertionError: 1 == 2
++ expected - actual
+-1
++2
+at mocked-stack-trace
+Test Suites: 1 failed, 1 total
+Tests: 1 failed, 1 total
+Snapshots: 0 total
+Time:
+Ran all test suites.
+
 "
 `;

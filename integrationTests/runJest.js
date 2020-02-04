@@ -33,8 +33,9 @@ const normalize = output =>
     .replace(new RegExp('.*at .*\\n', 'g'), 'mocked-stack-trace')
     .replace(/.*at .*\\n/g, 'mocked-stack-trace')
     .replace(/(mocked-stack-trace)+/, '      at mocked-stack-trace')
-    .replace(/\s+\n/g, '\n')
-    .replace(/\s+/g, ' ')
+    .replace(/ +\n/g, '\n')
+    .replace(/\n+/g, '\n')
+    .replace(/ +/g, ' ')
     // sometimes random spaces are being added to test output at the end, remove them
     .split('\n')
     .map(line => line.trim())
