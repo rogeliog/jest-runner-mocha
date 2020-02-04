@@ -1,15 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Works when it has an error in the tests 1`] = `
-"FAIL integrationTests/__fixtures__/errorInTest/__mocha__/__tests__/file.test.js
-  ● Test suite failed to run
-    Some error message
-      at mocked-stack-trace
-Test Suites: 1 failed, 1 total
-Tests:       0 total
-Snapshots:   0 total
-Time:
-Ran all test suites.
+"[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2mintegrationTests/__fixtures__/errorInTest/__mocha__/__tests__/[22m[1mfile.test.js[22m
+  [1m●[22mTest suite failed to run
 
+    Some error message
+
+    [0m [90m 2 | [39m[36mconst[39m assert [33m=[39m require([32m'assert'[39m)[33m;[39m[0m
+    [0m [90m 3 | [39m[0m
+    [0m[31m[1m>[22m[39m[90m 4 | [39m[36mthrow[39m [36mnew[39m [33mError[39m([32m'Some error message'[39m)[33m;[39m[0m
+    [0m [90m   | [39m      [31m[1m^[22m[39m[0m
+    [0m [90m 5 | [39m[0m
+    [0m [90m 6 | [39mdescribe([32m'My tests'[39m[33m,[39m () [33m=>[39m {[0m
+    [0m [90m 7 | [39m  it([32m'This is a test'[39m[33m,[39m () [33m=>[39m {[0m
+
+      at mocked-stack-trace
+[1mTest Suites:[22m[1m[31m1 failed[39m[22m, 1 total
+[1mTests:      [22m0 total
+[1mSnapshots:  [22m0 total
+[1mTime:[22m        
+[2mRan all test suites[22m[2m.[22m
 "
 `;

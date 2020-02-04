@@ -17,3 +17,4 @@ jest.config.js
 .nsprc
 .dockerignore
 src/utils/__tests__
+package-lock.json

@@ -1,30 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Works when it has only passing tests 1`] = `
-"PASS integrationTests/__fixtures__/passing/__mocha__/__tests__/file.test.js
+"[0m[7m[1m[32m PASS [39m[22m[27m[0m [2mintegrationTests/__fixtures__/passing/__mocha__/__tests__/[22m[1mfile.test.js[22m
   My tests
-    ✓ This test passes
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
-Snapshots:   0 total
-Time:
-Ran all test suites.
+    [32m✓[39m [2mThis test passes[22m
+
+[1mTest Suites:[22m[1m[32m1 passed[39m[22m, 1 total
+[1mTests:      [22m[1m[32m1 passed[39m[22m, 1 total
+[1mSnapshots:  [22m0 total
+[1mTime:[22m        
+[2mRan all test suites[22m[2m.[22m
 "
 `;
 
 exports[`Works when it has only passing tests and --coverage 1`] = `
-"PASS integrationTests/__fixtures__/passing/__mocha__/__tests__/file.test.js
+"[0m[7m[1m[32m PASS [39m[22m[27m[0m [2mintegrationTests/__fixtures__/passing/__mocha__/__tests__/[22m[1mfile.test.js[22m
   My tests
-    ✓ This test passes
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
-Snapshots:   0 total
-Time:
-Ran all test suites.
---------------|----------|----------|----------|----------|----------------|
-File          |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
---------------|----------|----------|----------|----------|----------------|
-All files     |      100 |      100 |      100 |      100 |                |
- file.test.js |      100 |      100 |      100 |      100 |                |
---------------|----------|----------|----------|----------|----------------|"
+    [32m✓[39m [2mThis test passes[22m
+
+[1mTest Suites:[22m[1m[32m1 passed[39m[22m, 1 total
+[1mTests:      [22m[1m[32m1 passed[39m[22m, 1 total
+[1mSnapshots:  [22m0 total
+[1mTime:[22m        
+[2mRan all test suites[22m[2m.[22m
+--------------|---------|----------|---------|---------|-------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------|---------|----------|---------|---------|-------------------
+[32;1mAll files    [0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                 [0m 
+[32;1m file.test.js[0m | [32;1m    100[0m | [32;1m     100[0m | [32;1m    100[0m | [32;1m    100[0m | [33;1m                 [0m 
+--------------|---------|----------|---------|---------|-------------------"
 `;

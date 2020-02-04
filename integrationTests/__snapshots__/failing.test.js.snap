@@ -1,20 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Works when it has failing tests 1`] = `
-"FAIL integrationTests/__fixtures__/failing/__mocha__/__tests__/file.test.js
+"[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2mintegrationTests/__fixtures__/failing/__mocha__/__tests__/[22m[1mfile.test.js[22m
+  My tests
+    [31m✕[39m [2mThis test fails[22m
+
+
     My tests This test fails
+
       [31mAssertionError: 1 == 2[0m
       [32m+ expected[0m [31m- actual[0m
+
       [31m-1[0m
       [32m+2[0m
+      
       at mocked-stack-trace
-  My tests
-    ✕ This test fails
-Test Suites: 1 failed, 1 total
-Tests:       1 failed, 1 total
-Snapshots:   0 total
-Time:
-Ran all test suites.
 
+[1mTest Suites:[22m[1m[31m1 failed[39m[22m, 1 total
+[1mTests:      [22m[1m[31m1 failed[39m[22m, 1 total
+[1mSnapshots:  [22m0 total
+[1mTime:[22m        
+[2mRan all test suites[22m[2m.[22m
 "
 `;

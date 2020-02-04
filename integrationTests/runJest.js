@@ -12,7 +12,9 @@ const normalize = output =>
     .replace(new RegExp('.*at .*\\n', 'g'), 'mocked-stack-trace')
     .replace(/.*at .*\\n/g, 'mocked-stack-trace')
     .replace(/(mocked-stack-trace)+/, '      at mocked-stack-trace')
-    .replace(/\s+\n/g, '\n');
+    // Spaces are sometimes(!!) generated before escape character, need to remove them for consistency
+    // eslint-disable-next-line no-control-regex
+    .replace(/ \x1b\[22m/g, '[22m');
 
 const runJest = (project, options = []) => {
   // eslint-disable-next-line
