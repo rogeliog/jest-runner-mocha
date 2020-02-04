@@ -1,22 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Works when it has an error inside of beforeEach 1`] = `
-"[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2mintegrationTests/__fixtures__/errorInBeforeEach/__mocha__/__tests__/[22m[1mfile.test.js[22m
-  My tests
-    [32m✓[39m [2mThis test passes[22m
-  Nested describe
-    My tests
-      [31m✕[39m [2m\\"before each\\" hook for \\"This nested test passes\\"[22m
-
-
-    My tests Nested describe \\"before each\\" hook for \\"This nested test passes\\"
-Error: Error in nested beforeEach
-      at mocked-stack-trace
-
-[1mTest Suites:[22m[1m[31m1 failed[39m[22m, 1 total
-[1mTests:      [22m[1m[31m1 failed[39m[22m, [1m[32m1 passed[39m[22m, 2 total
-[1mSnapshots:  [22m0 total
-[1mTime:[22m        
-[2mRan all test suites[22m[2m.[22m
+"FAIL integrationTests/__fixtures__/errorInBeforeEach/__mocha__/__tests__/file.test.js My tests ✓ This test passes Nested describe My tests ✕ \\"before each\\" hook for \\"This nested test passes\\" My tests Nested describe \\"before each\\" hook for \\"This nested test passes\\" Error: Error in nested beforeEach at mocked-stack-trace Test Suites: 1 failed, 1 total Tests: 1 failed, 1 passed, 2 total Snapshots: 0 total Time: Ran all test suites.
 "
 `;
