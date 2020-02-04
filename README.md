@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.com/jehy/jest-runner-mocha.svg?branch=master)](https://travis-ci.org/jehy/jest-runner-mocha) [![npm version](https://badge.fury.io/js/%40kernel-panic%2Fjest-runner-mocha.svg)](https://badge.fury.io/js/%40kernel-panic%2Fjest-runner-mocha)
+[![dependencies Status](https://david-dm.org/jehy/jest-runner-mocha/status.svg)](https://david-dm.org/jehy/jest-runner-mocha)
+[![devDependencies Status](https://david-dm.org/jehy/jest-runner-mocha/dev-status.svg)](https://david-dm.org/jehy/jest-runner-mocha?type=dev)
+[![Known Vulnerabilities](https://snyk.io/test/github/jehy/jest-runner-mocha/badge.svg)](https://snyk.io/test/github/jehy/jest-runner-mocha)
 
 # It's a fork!
 
